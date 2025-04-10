@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "@/styles/order.module.css";
-import orderListData from "./Data";
+import { orderListData } from "@/data";
 import { useRouter } from "next/router";
 
 export default function Table() {
@@ -71,6 +71,12 @@ function TableHead({ name }) {
 
 function TableRow(props) {
   const { item } = props;
+  const router = useRouter();
+
+  const goToDetails = (itemId) => {
+    router.push(`/orders/${itemId}`);
+  };
+
   return (
     <tr
       className={styles["tr"]}
